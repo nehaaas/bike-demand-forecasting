@@ -15,7 +15,13 @@ if not predictions_path.exists():
     )
     st.stop()
 
-predictions = pd.read_csv(predictions_path, parse_dates=["datetime"])
+predictions = pd.read_csv(predictions_path)
+predictions["datetime"] = pd.to_datetime(
+    predictions["datetime"], dayfirst=True, errors="coerce"
+)
+if predictions["datetime"].isna().any():
+    st.error("Some datetime values could not be parsed. Check reports/test_predictions.csv.")
+    st.stop()
 if predictions.empty:
     st.error("The prediction file is empty. Rerun the notebook to regenerate it.")
     st.stop()
