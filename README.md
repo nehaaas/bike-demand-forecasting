@@ -19,6 +19,18 @@ The notebook contains the full analysis workflow and generates the CSV used by t
 - requirements.txt: packages needed for the notebook and dashboard.
 - reports/: generated predictions are written here; the dataset itself is fetched from UCI and is not bundled.
 
+## Dashboard screenshots
+
+The dashboard compares actual hourly demand with the model forecast and a same-hour-last-week baseline for a selected test day.
+
+**Daily overview**
+
+![Bike demand dashboard overview with daily metrics and actual, model, and baseline lines](assets/dashboard-overview.png)
+
+**Hourly results**
+
+![Hourly actual demand, model predictions, and weekly baseline results](assets/dashboard-hourly-results.png)
+
 ## Method
 The prediction target is bike rentals for an hour. Inputs include calendar details known in advance, rental counts from 1 hour, 24 hours, and 1 week earlier, and weather measurements from the previous hour. This avoids using the target hour's observed weather as if it were already known.
 
